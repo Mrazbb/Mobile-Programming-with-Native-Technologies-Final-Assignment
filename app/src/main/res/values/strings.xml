@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">FinalAssignment</string>
+    <string name="home">Home</string>
+    <string name="quotes">Quotes</string>
+    <string name="settings">Settings</string>
+    <string name="no_quotes_available">No quotes available</string>
+    <string name="next_quote">Next Quote</string>
+    <string name="filled_star">Filled Star</string>
+    <string name="empty_star">Empty Star</string>
+    <string name="dark_mode">Dark Mode</string>
 </resources>

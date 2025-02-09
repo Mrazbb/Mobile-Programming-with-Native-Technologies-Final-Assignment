@@ -41,13 +41,7 @@ fun TopBar(navController: NavController, onMenuClick: () -> Unit, title: String)
         ),
         navigationIcon = {
             Row {
-                // Drawer Menu Icon
-                IconButton(onClick = onMenuClick) {
-                    Icon(
-                        imageVector = Icons.Filled.Menu,
-                        contentDescription = "Open Drawer"
-                    )
-                }
+
                 if (currentRoute != "home") {
                     // Back Navigation Icon
                     IconButton(onClick = { navController.navigateUp() }) {
@@ -58,37 +52,7 @@ fun TopBar(navController: NavController, onMenuClick: () -> Unit, title: String)
                     }
                 }
             }
-        },
-        actions = {
-            // Overflow menu icon
-            IconButton(onClick = { expanded = !expanded }) {
-                Icon(
-                    imageVector = Icons.Filled.MoreVert,
-                    contentDescription = "More Options"
-                )
-            }
-            // Dropdown menu displayed when expanded is true
-            DropdownMenu(
-                expanded = expanded,
-                onDismissRequest = { expanded = false }
-            ) {
-                DropdownMenuItem(
-                    text = { Text("Info") },
-                    onClick = {
-                        // Handle Info action
-                        expanded = false
-                        navController.navigate("info")
-                    }
-                )
-                DropdownMenuItem(
-                    text = { Text("Settings") },
-                    onClick = {
-                        // Handle Settings action
-                        expanded = false
-                        navController.navigate("settings")
-                    }
-                )
-            }
         }
+
     )
 }

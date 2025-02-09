@@ -1,0 +1,20 @@
+
+# app
+app/tmp/*
+app/logs/*
+app/databases/*
+app/files
+**/node_modules
+app/index.pid
+app/package-lock.json
+
+app/sql/alter.sql
+app/alter.sql
+
+
+app/package-lock.json
+translate.resource
+app/public/admin-ui.js
+app/index.js.json
+app/index.js.map
+app/index.pid

@@ -9,22 +9,16 @@ import kotlinx.coroutines.launch
 
 class RatingViewModel: ViewModel() {
 
-    val ratingsList = mutableStateListOf<UserRating>()
-
-    init {
-        fetchRatings()
-    }
+    val ratings = mutableStateListOf<UserRating>()
 
     // Fetches ratings from the API and updates the ratingsList.
-    fun fetchRatings() {
-        viewModelScope.launch {
-            try {
-                val apiRatings = RatingsApi.getInstance().getRatings()
-                ratingsList.clear()
-                ratingsList.addAll(apiRatings)
-            } catch (e: Exception) {
-                Log.d("ERROR", "Error fetching ratings: ${e.message}")
-            }
+    suspend fun fetchRatingsSuspend() {
+        try {
+            val apiRatings = RatingsApi.getInstance().getRatings()
+            ratings.clear()
+            ratings.addAll(apiRatings)
+        } catch (e: Exception) {
+            Log.d("ERROR", "Error fetching ratings: ${e.message}")
         }
     }
 
@@ -33,9 +27,7 @@ class RatingViewModel: ViewModel() {
         viewModelScope.launch {
             try {
                 val postedRating = RatingsApi.getInstance().postRating(rating)
-
-                ratingsList.add(postedRating)
-                fetchRatings()
+                fetchRatingsSuspend()
                 Log.d("RATING", "Rating posted successfully: $postedRating")
             } catch (e: Exception) {
                 Log.d("ERROR", "Error posting rating: ${e.message}")

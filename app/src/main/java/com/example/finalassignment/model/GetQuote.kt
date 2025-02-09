@@ -17,7 +17,6 @@ data class GetQuote(
     var dtremoved: String? = null
 )
 
-
 interface QuotesApi {
 
     @GET("api/quote")
